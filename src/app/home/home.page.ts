@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private dataService: DataService,) {}
+
+  test(){
+    this.dataService.testAPI().then( (result) => {
+      console.log(result);
+    }, (err) => {
+     console.log(err.errors);
+    });
+  }
 
 }
+
+
